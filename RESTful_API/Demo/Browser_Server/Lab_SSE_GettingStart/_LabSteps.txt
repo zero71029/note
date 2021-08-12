@@ -1,0 +1,40 @@
+1.  建立一個 PHP 程式，檔名: sse_server.php，內容如下:
+
+<?php
+header('Content-Type: text/event-stream');
+header('Cache-Control: no-cache');
+
+$time = date('Y-m-d H:i:s');
+echo "data: Current time: {$time}\n\n";
+flush();
+?>
+
+
+
+2.  建立一個 PHP 程式，檔名: sse_client.php，內容如下:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="result"></div>
+
+<script>
+    if(typeof(EventSource)!=="undefined")
+    {
+        var source=new EventSource("sse_server.php");
+        source.onmessage=function(event){
+                document.getElementById("result").innerHTML+=event.data + "<br>";
+            };
+    }
+    else {
+        document.getElementById("result").innerHTML="Sorry, your browser does not support server-sent events.";
+    }
+</script>
+
+</body>
+</html>
+
+
+
+3.  執行 sse_client.php

@@ -1,0 +1,123 @@
+1.  連接到 http://sourceforge.net/projects/nusoap/ 並且下載最新版的 nusoap zip壓縮檔
+    <Note> 或者使用 download 資料夾之前下載的檔案。
+
+
+2.  在 Workspace 建立 WebService 資料夾
+    (Hint: 滑鼠右鍵點按 Workspace | New Folder)
+    例如: 你的 Workspace 叫 lab，目錄結構就變成
+    lab
+      +-- WebService
+
+
+3.  解壓縮步驟一下載的壓縮檔，
+    將其中的 lib 資料夾複製貼入 WebService 專案
+
+
+
+4.  在 WebService 資料夾新建一個PHP程式，
+    檔名: Server.php，內容如下:
+
+<?php
+
+// 引用 nusoap 函式館
+require_once ('lib/nusoap.php');
+
+$server = new soap_server ();
+
+// 登記哪些 function 要對外公開
+$server->register ( 'SayHello' );
+$server->register ( 'Add' );
+
+// 實作對外公開的函式
+function SayHello($UserName) {
+    $result = "";
+    if (! $UserName) {
+        return new soap_fault ( 'Client', '', 'Please tell me your name.' );
+    }
+    $result = "Hi! " . $UserName;
+    return $result;
+}
+
+function Add($x, $y) {
+    return $x + $y;
+}
+
+
+$server->service ( $HTTP_RAW_POST_DATA );
+exit ();
+
+?> 
+
+ 
+
+5.  在 WebService 資料夾新建一個 PHP 程式，
+    檔名: Client.php，內容如下:
+    
+    請注意: 
+    https://lab-appdev1226-1.c9users.io
+    務必換成你的「工作區名稱-帳號」
+    例如:
+    https://lab-derekjeter.c9users.io
+
+<?php
+
+// 引用 nusoap 函式館
+require_once ('lib/nusoap.php');
+
+// 準備 SayHello 方法所需的參數值
+$param = array (
+        'UserName' => 'Chien' 
+);
+
+// 建立 nusoap_client 並且呼叫 WebService 的方法
+$client = new nusoap_client ( 'https://lab-appdev1226-1.c9users.io/WebService/Server.php' );
+$response = $client->call ( 'SayHello', $param );
+
+// 處理傳回值
+if ($client->fault) {
+    echo "FAULT: <p>Code: (" . $client->faultcode . "</p>";
+    echo "String: " . $client->faultstring;
+} else {
+    echo $response;
+}
+
+echo "<hr>";
+
+// 準備 Add 方法所需的參數值
+$param = array (
+        'x' => 10,
+        'y' => 11
+);
+
+// 呼叫 Add 方法
+$response = $client->call ( 'Add', $param );
+
+// 處理傳回值
+if ($client->fault) {
+    echo "FAULT: <p>Code: (" . $client->faultcode . "</p>";
+    echo "String: " . $client->faultstring;
+} else {
+    echo $response;
+}
+
+?> 
+
+
+
+
+6.  執行 Client.php。
+    點按 Workspace 工具列的 Run Project 啟動 Apache
+
+    利用下列網址可執行程式:
+    https://lab-appdev1226-1.c9users.io/Lab_WebService/Client.php
+<Note> 請更換「工作區名稱-帳號」
+https://工作區名稱-帳號.c9users.io
+例如:
+https://lab-appdev1226-1.c9users.io
+
+(Hint: Workspace 下方的終端機視窗會有伺服器的網址。)
+
+
+
+
+7.  仿照上述的 Add 方法，實作一個 Subtract 減法，並且在 Client.php 呼叫試用。

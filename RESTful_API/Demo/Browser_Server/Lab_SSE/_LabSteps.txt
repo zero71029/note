@@ -1,0 +1,64 @@
+1.  建立一個 PHP 程式，檔名: sse_server.php，內容如下:
+
+<?php 
+header('Content-Type: text/event-stream');
+header('Cache-Control: no-cache');
+
+$counter = rand(1, 10);
+while (1) {
+  echo "event: ping\n";
+  $curDate = date('Y-m-d H:i:s');
+  echo 'data: {"time": "' . $curDate . '"}';
+  echo "\n\n";
+  ob_flush();
+  flush();
+
+  $counter--;
+  if (!$counter) {
+    echo 'data: This is a message at time ' . $curDate . "\n\n";
+    break;
+  }
+  
+  sleep(1);
+}
+?>
+
+
+
+2.  建立一個 PHP 程式，檔名: sse_client.php，內容如下:
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+
+<ul id="eventList">
+</ul>
+
+<script>
+    var evtSource = new EventSource("sse_server.php");
+    evtSource.onmessage = function(e) {
+        var newElement = document.createElement("li");
+        newElement.innerHTML = "message: " + e.data;
+        eventList.appendChild(newElement)
+    };
+
+    evtSource.addEventListener("ping", function(e) {
+        var newElement = document.createElement("li");
+        var obj = JSON.parse(e.data);
+        newElement.innerHTML = "ping at " + obj.time;
+        eventList.appendChild(newElement);
+    }, false);  
+</script>
+
+</body>
+</html>
+
+
+
+3.  執行 sse_client.php
+
