@@ -1,0 +1,68 @@
+body{
+    /* 浮動 clear: ;*/
+    float: left;
+    float: right;
+    /* 行高 */
+    line-height: 1.5;
+    /* 水平居中  設定行高等於高度 */
+    /* line-height: 高度; */
+    overflow: hidden;  /* 溢出隱藏 */
+
+    opacity: 0.5;    /* 透明度 */
+
+    AAA:nth-child(2);
+    position : relative;
+    position :absolute;
+    position : fixed;
+    left: 50px;
+    right: 50px;
+    top: 50px;
+    bottom: 50px;
+    /* position: 置中; *//* 左右設為0 margin設為 auto; */
+    
+    z-index: 1;
+    /* 堆疊上下文 */
+
+    display: none;
+    visibility: hidden;   /* 盒子隱藏 */
+
+    font-family: sans-serif;    /* 字體 */
+
+    display: none; /* 不顯示 */
+    display: block; /* 回復 */
+
+    background-image: url("./AAA/bb.jpg");
+    background-attachment: fixed;/* 背景圖固定視口 */
+    
+
+
+}
+aaa:nth-child(2n){
+/* 選中2的倍數 */
+}
+第一個A元素
+a:first-child
+a:last-child
+a:nth-child()
+a:nth-of-type()
+:first-of-type()/* 第一個指定型的元素 */
+:first-of-type()/* 第一個指定型的元素 必須是A元素*/
+
+
+iframe{
+    /* 網頁中欠入另一個網頁 */
+}
+
+
+.clearfix{
+    height: 60px;
+    background-color: blue;
+    clear: both;
+}
+#container:after {  
+    content: ".";  
+    display: block;  
+    height: 0;  
+    clear: both;  
+    visibility: hidden;  
+}

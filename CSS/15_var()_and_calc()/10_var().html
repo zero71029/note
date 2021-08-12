@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        /* 10. 在 html 中設定 --a-color: green;  觀察畫面的變化*/
+        :root{
+            --a-color: green;
+        }
+        
+        /* 20. 取得在 html 中設定的變數值 */
+        /*      20-1. 選擇 p 標籤 設定 color: brown; 觀察畫面的變化*/
+        /*      20-2. 選擇 h3 標籤 設定 color: var(--a-color); 觀察畫面的變化 */
+        p{
+            color: brown; 
+        }
+        h3{
+            color: var(--a-color) ;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>在 CSS 中使用變數</h3>
+    <!-- <h4> a. 使用 -- 宣告</h4> -->
+    <!-- <h4> b. 透果 var function 取得變數值</h4> -->
+    <h3><a href="https://www.w3schools.com/css/css3_variables.asp">CSS Variables</a></h3>
+
+    <hr>
+
+    <p> 測試 <span>顏色</span> 設定 </p>
+
+</body>
+
+</html>

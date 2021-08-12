@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* 10. 請試著加入 css  */
+        /*      讓文字在滑鼠經過時才顯示 */
+
+        /* 圖片太大了 => 圖片要縮小 */
+        img {
+            width: 500px;
+        }
+        figure{
+            position: relative;
+        }
+        /* 文字一開始不要顯示在畫面上 */
+        /* 文字要放大一點 */
+        /* 文字跟圖片重疊再一起 */
+        .desc{
+            visibility: hidden;
+            font-size: 3rem;
+            position: absolute;
+            bottom: 0px;
+            background-color: rgba(255, 255, 255, 0.5);
+            width: 100%;
+        }
+        
+        /* 滑鼠經過圖片的時候文字才要顯示 */
+        figure:hover>.desc{
+            visibility: visible;
+        }
+        
+        body{
+            background-color: aqua;
+        }
+        figcaption{
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <figure>
+        <img src="img/sunny.JPG">
+        <figcaption class="desc">千陽號海上行</figcaption>
+    </figure>
+
+</body>
+
+</html>

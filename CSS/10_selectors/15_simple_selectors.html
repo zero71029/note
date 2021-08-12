@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Simple selectors</title>
+
+    <!-- 將CSS部分獨立撰寫 -->
+    <!--   a. CSS會區分文字大小寫 -->
+    <!--   b. CSS註解方式為 /* */ -->
+    <!--   c. 如果"屬性值"包含空白，記得將屬性值前後加上雙引號或者單引號 -->
+
+    <style>
+        /* 挑選 img 標籤，將寬度 width 設定為 150px */
+        img {
+            width: 150px;
+        }
+
+        /* 挑選 div 標籤，將 display 設定為 inline-block */
+        div {
+            display: inline-block;
+        }
+
+        /* 用   #id  挑選，幫這 5個 div 各自設定顏色 color */
+        #Bulbasaur {
+            color: green
+        }
+
+        #Charmander {
+            color: red;
+        }
+
+        #Squirtle {
+            color: blue;
+        }
+
+        #Pikachu {
+            color: yellow;
+        }
+
+        #cat {
+            color: orange;
+        }
+
+
+        /* 用 .class 挑選，將 pokemon 類型的背景進行相關設定 background-* (答案在防雷頁底下) */
+
+        .pokemon{
+            background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("image/Pokemon/pokeball.png");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position: center;
+        }
+
+
+
+
+        /* ==防雷頁== */
+        /* linear-gradient：顏色漸層設定 */
+        /* :::before      ：虛擬元素設定 */
+
+
+        /* 設定透明度方法A：background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("image/Pokemon/pokeball.png");*/
+
+        /* 設定透明度方法B */
+        /* .pokemon {
+            position: relative;
+        }
+
+        .pokemon::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: url("image/Pokemon/pokeball.png");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.5;
+            z-index: -100;
+        } */
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Simple Selectors  -->
+    <h3><a href="https://www.w3schools.com/css/css_selectors.asp">Simple Selectors - 網頁底下表格 All CSS Simple Selectors</a>
+    </h3>
+    <h3>各種選擇器與效果：<a href="https://www.w3schools.com/cssref/trysel.asp">https://www.w3schools.com/cssref/trysel.asp</a>
+    </h3>
+
+    <hr>
+    <!-- 1. 使用 <div> 打包 <h3> 以及 <img> tag-->
+    <!-- 2. 屬於 神奇寶貝 的 <div> 賦予 class="pokemon"，id="對應的神奇寶貝名稱" -->
+    <!-- 3. 多的貓科，請自由命名 -->
+    <!-- 4. 回到 <head> 裡面的 <style> 區塊，開始進行css樣式的編輯 -->
+    <!-- 5. 最後，將CSS獨立為一個檔案，使用 link 元素連結至HTML檔案 -->
+    <div class="pokemon" id="Bulbasaur">
+        <h3>妙蛙種子</h3>
+        <img src="image/Pokemon/001.png" alt="">
+    </div>
+    <div class="pokemon" id="Charmander">
+        <h3>小火龍</h3>
+        <img src="image/Pokemon/004.png" alt="">
+    </div>
+    <div class="pokemon" id="Squirtle">
+        <h3>傑尼龜</h3>
+        <img src="image/Pokemon/007.png" alt="">
+    </div>
+    <div class="pokemon" id="Pikachu">
+        <h3>皮卡丘</h3>
+        <img src="image/Pokemon/025.png" alt="">
+    </div>
+    <div class="lanlan" id="cat">
+        <h3>臭跩貓</h3>
+        <img src="image/LanLanCat/cat.jpg" alt="">
+    </div>
+
+    <!-- Bulbasaur  => 妙蛙種子 -->
+    <!-- Charmander => 小火龍 -->
+    <!-- Squirtle   => 傑尼龜 -->
+    <!-- Pikachu    => 皮卡丘 -->
+
+</body>
+
+</html>

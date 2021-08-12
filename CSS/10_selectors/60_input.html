@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* 10. 改變滑鼠經過 radio 的樣式 */
+        input[type="radio"]{
+            cursor: pointer;
+        }
+
+        /* 30. :valid   驗證通過時的樣式設定 */
+        /* 40. :invalid 驗證不通過時的樣式設定 */
+        input:valid{
+            background-color: green;
+        }
+        input:invalid{
+            background-color: red;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h3>查詢 css 是否適用於某個瀏覽器：<a href="https://caniuse.com/">https://caniuse.com/</a></h3>
+    <hr>
+    <!-- 底下號碼對照上方CSS設定 -->
+    <!-- 10. 產生 單選按鈕元素 -->
+    <!-- 30. 產生 可以輸入email 的方框 -->
+    <!-- 30. 產生 可以輸入文字  的方框，並限制只能輸入大寫英文 -->
+    <input type="radio"> <br>
+    <input type="email" value="123"> <br>
+    <input type="email" value="apple@gmail.com"> <br>
+    <input type="text" value="bee">
+</body>
