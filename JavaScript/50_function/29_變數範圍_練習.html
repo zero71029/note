@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+        // 1. 在這裡宣告一個變數 x 設定初始值 為 999
+        // 2. 透過 console.log(x); 觀察 x 為?
+        var x = 999;
+        // console.log(x);  // 999
+    </script>
+</head>
+
+<body>
+
+    <!-- 3. 在這裡增加一顆按鈕<button>，
+            綁定onclick="getX()"事件 -->
+    <button onclick="getX()"> 取得X </button>
+    <button onclick="setYZ()"> 設定 Y Z </button>
+    <button onclick="getYZ()"> 取得 Y Z </button>
+
+    <script>
+        // 4. 宣告 function getX()，裡面"宣告"一個變數 x 設定初始值 為 1，並log下來
+        //      4-1. 至瀏覽器觀察，log(x) 的紀錄是什麼?
+        //      4-2. 如果需要取用到 步驟 1 的 x，要怎麼取得?
+        function getX() {
+            var x = 1;
+            console.log(x);         // 1   ==> 找到自己function裡面的
+            console.log(window.x);  // 999 ==> 找到外面的
+        }
+
+        // 6. 宣告 function setYZ() 
+        //      6-1. "不使用" var 關鍵字，宣告一個變數 y，給予初始值 2 並log出來查看
+        //      6-2. "使用" var 宣告變數z，並給予初始值 3 且log出來查看
+        function setYZ(){
+            y = 2;
+            var z = 3;
+            console.log(y);  //  2
+            console.log(z);  //  3
+        }
+
+        // 7. function getYZ() 將變數 y 和 變數 z log出來查看
+        function getYZ(){
+            console.log(y); // 2    ==> y 【全域】
+            console.log(z); // 爆掉 ==>  z 【區域】
+        }
+    </script>
+
+</body>
+
+</html>

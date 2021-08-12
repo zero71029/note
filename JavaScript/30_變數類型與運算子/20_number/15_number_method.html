@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h3>JavaScript Number Methods：<a href="https://www.w3schools.com/js/js_number_methods.asp">https://www.w3schools.com/js/js_number_methods.asp</a></h3>
+
+    <script>
+ 
+        // 10. toPrecision() and toFixed()
+        // 請測試數值 1.005 和 1.006
+        var x = 1.005;
+        var temp = x.toFixed(20); 
+        console.log(temp); 
+
+        var y = 1.006;
+        var temp2 = y.toPrecision(20);
+        console.log(temp2); 
+
+        // 20. 數值運算常見的錯誤
+        // NaN、Infinity、-Infinity
+        var z = 1 / 0;
+        console.log(z);
+
+        
+        // 30. 數值轉字串的方法 toString()
+        var apple = 5;
+        console.log( typeof apple);
+        var temp = apple.toString();
+        console.log( typeof temp);
+
+    </script>
+
+</body>
+
+</html>

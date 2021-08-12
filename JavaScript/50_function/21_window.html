@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h3><a href="https://www.w3schools.com/jsref/obj_window.asp" target="_blank">The Window Object</a></h3>
+
+    <script>
+        // 10. 大寫 Window 和小寫 window 的差異
+        // console.log(Window);
+        // console.log(window);
+
+        // alert("hi-1");
+        // // 20. 是否可以宣告一個變數為 alert ？
+        // var alert = "apple";
+        // alert("hi-2");
+        
+        // 30. function 內 宣告一個變數為 console 
+        //     是否會影響 console.log() & window.console.log() 的使用？
+        function test(){
+            var console = "apple";
+            window.console.log(console); // O
+            console.log(console);        // X
+        }
+        test();
+    </script>
+
+</body>
+
+</html>

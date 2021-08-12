@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h3> ES6 新增的箭頭函式，精簡了function的寫法</h3>
+    <h3><a href="https://www.w3schools.com/js/js_arrow_function.asp">Arrow Function</a></h3>
+
+    <script>
+
+        // 10. 透過 函式運算式 宣告一個 function
+        var apple = function () {
+            return "apple";
+        }
+        console.log(apple());
+
+        // 20. 精簡後的樣子 () => 
+        var bee = () => "bee";
+        console.log(bee());
+
+        // 30. 可以有參數的傳入 (para) => 
+        var cat = (x, y) => x + y;
+        var temp = cat(10, 20);
+        console.log(temp); // 30
+
+        // 35. 改寫 30 加上 {} 程式碼
+        var dog = (x, y) => { x + y };
+        var temp = dog(10, 20); // 因為沒有 return 所以這邊是 undefine
+        console.log(temp);
+
+        // 40. 如果說需要多個陳述句子，還是需要加上 () => {}
+        var egg = (x, y) => {
+            x = x + 1;     // 11 = 10 + 1  
+            y = y + 2;     // 22 = 20 + 2  
+            return x + y;  // 11 + 22
+        }
+        var temp = egg(10, 20);
+        console.log(temp); // 33
+
+    </script>
+
+</body>
+
+</html>

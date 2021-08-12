@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h3>點選圖片後，置換成另外一張圖片</h3>
+    <!-- 10. 設定一張圖片 -->
+    <img id="test" onclick="changeImage()" src="../../_image/notification.png" alt="">
+
+    <script>
+        // 11. 取得上一個步驟的圖片
+        // 20. 設定點選圖片後，換成另外一張圖片
+        function changeImage() {
+            var myImg = document.getElementById('test');
+            console.log(myImg.src);
+
+            if (myImg.src.indexOf("notification") > -1) {
+                myImg.src = "../../_image/find.png";
+            } else {
+                myImg.src = "../../_image/notification.png";
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

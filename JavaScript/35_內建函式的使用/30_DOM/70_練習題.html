@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <!-- 10. 請在畫面加入兩個input元素 -->
+    <!-- 20. 請在畫面加入一顆按鈕 -->
+    <!-- 30. 點選按鈕後，計算元素輸入的內容值相除的值還有餘數 -->
+
+   <input id="x" type="text">
+   /
+   <input id="y" type="text">
+   <button onclick="getAns()">=</button>
+   <hr>
+   <h3 id="result">   </h3>
+
+    <script>
+        function getAns() {
+            var x = parseInt(    document.getElementById('x').value    );
+            var y = parseInt(    document.getElementById('y').value    );
+
+            // 整除的那一個數字 還有 餘數
+            var a = x % y;      // 假裝是 11 % 2，這樣會得到 1  
+            var b = (x-a) / y;  // 先扣掉除不盡的，就一定可以得到整除的數字
+
+            var ans = `${b} 餘 ${a}`;
+            document.getElementById('result').innerText = ans;
+        }
+    </script>
+
+</body>
+
+</html>

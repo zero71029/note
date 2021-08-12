@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <!-- <h3>this 關鍵字代表什麼值，取決於你在哪裡使用它</h3> -->
+    <!-- <h3><a href="https://www.w3schools.com/js/js_this.asp" target="_blank">The JavaScript <b>this</b> Keyword</a></h3> -->
+    <hr>
+    <button id="btn1" onclick="btnClick(this)">1</button>
+    <button id="btn2" onclick="btnClick(this)">2</button>
+    <button id="btn3" onclick="btnClick(this)">3</button>
+    <hr>
+    <button id="btn4" onclick="teacherStyle('4')">4</button>
+    <button id="btn5" onclick="teacherStyle('5')">5</button>
+    <button id="btn6" onclick="teacherStyle('6')">6</button>
+    <h3 id="result"></h3>
+
+    <script>
+        // 30. In an event, this refers to the element that received the event.
+        // 底下code是學長寫的。
+        function btnClick(apple) {
+            // console.log(apple);    // 誰觸發事情就是誰
+            document.getElementById('result').innerText += apple.id.replace("btn", "");
+        }
+
+        function teacherStyle(num){
+            document.getElementById('result').innerText += num;
+        }
+
+        // 10. Alone, this refers to the global object.
+        var temp = "ok";
+        // console.log(temp);
+        // console.log(window.temp);
+        // console.log(this.temp);
+
+
+        // 20. In a method, this refers to the owner object.
+        //    物件就是 屬性+方法
+        var s1 = {
+            html: 100,
+            css: 90,
+            js: 80,
+            getScore: function () {
+                return this.html + this.css + this.js;
+            }
+        }
+        var temp = s1.getScore();
+        // console.log(temp);
+
+
+        // 0323-add
+        // 50.  ()=>{} 裡面的 this
+        var obj = {
+            apple: 100,
+            bee: function () {
+                // console.log('bee Ok');
+                // console.log(this.apple);
+                console.log(this);
+            },
+            cat: () => {
+                // console.log('cat Ok');
+                // console.log(this.apple);
+                console.log(this);
+            }
+        }
+        obj.bee();
+        obj.cat();
+    </script>
+
+</body>
+
+</html>

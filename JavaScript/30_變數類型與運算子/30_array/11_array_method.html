@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h3>JavaScript Array Methods：
+        <a href="http://www.w3schools.com/js/js_array_methods.asp">http://www.w3schools.com/js/js_array_methods.asp</a>
+    </h3>
+
+    <script>
+        var weekList = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+
+        // 10. 陣列的取值和長度
+        console.log(weekList.length); //7
+        console.log(weekList[0]);
+
+        // 12. 陣列.toString()
+        console.log(weekList.toString());
+
+        // 13. 陣列.join("#")
+        console.log(weekList.join("#"));
+
+        // 14. 移除第一個元素
+        weekList.shift();
+        console.log(weekList.toString());
+
+        // 15. 移除最後一個元素
+        weekList.pop();
+        console.log(weekList.toString());
+
+
+        // console.clear();
+        console.log(weekList.toString());
+        // 16. 有哪三種方法可以加入元素?
+        // sunday  saturday
+        weekList.unshift("sunday");
+        console.log(weekList.toString());
+
+        weekList.push("saturday");
+        console.log(weekList.toString());
+
+        weekList[weekList.length] = "happy day";
+        console.log(weekList.toString());
+
+        // 20. 二維陣列的長度
+        var poker = [];
+        poker[0] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+        // console.clear();
+        console.log(poker.length); // 1
+        console.log(poker[0].length); // 13
+
+    </script>
+</body>
+
+</html>

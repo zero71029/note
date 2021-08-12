@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h4>JavaScript Date Objects</h4>
+    <p><a href="https://www.w3schools.com/js/js_dates.asp">https://www.w3schools.com/js/js_dates.asp</a></p>
+    <h4>JavaScript Get Date Methods</h4>
+    <p><a href="https://www.w3schools.com/js/js_date_methods.asp">https://www.w3schools.com/js/js_date_methods.asp</a>
+    </p>
+
+    <hr>
+    <p> 生成一個日期物件的方法：</p>
+    <p> new Date() </p>
+    <p> new Date(milliseconds) </p>
+    <p> new Date(dateString) </p>
+    <p> new Date(year, month, day, hours, minutes, seconds, milliseconds) </p>
+
+    <script>
+        // 宣告一個日期物件
+        var d = new Date();
+
+        // 取得年份
+        console.log(d.getFullYear());
+        // 取得月份 (請注意這裡)
+        console.log(d.getMonth());
+        // 取得日期
+        console.log(d.getDate());
+        // 取得星期 (請注意這裡)
+        console.log(d.getDay());
+        // 取得時間
+        console.log(d.getHours());
+        // 取得分鐘
+        console.log(d.getMinutes());
+
+
+
+        // 星期天 的 getDay() 會得到?? 
+        // Ans: 0
+        var a = new Date("2021/3/21");
+        console.log(a.getDay()); // 0
+
+
+
+        // 若日期物件生成後，我們需要加一天
+        // 若日期物件生成後，我們需要加一個月
+        console.clear();
+        var d = new Date();
+        d.setDate(d.getDate() + 1);
+        console.log(d);
+
+        d.setMonth(d.getMonth() + 1);
+        console.log(d);
+
+
+        // 小練習：如何透過日期的加減，取得這個月的最後一天?
+        //      版本A: 下個月的1號減1
+        var apple = new Date();
+        apple.setDate(1);
+        apple.setMonth(apple.getMonth() + 1);
+        apple.setDate(apple.getDate() - 1);
+        console.log(apple);
+
+        //      版本B: 
+        var bee = new Date();
+        var lastDay = new Date(bee.getFullYear(), bee.getMonth() + 1, 0)
+        console.log(lastDay);
+
+
+        // 小練習：宣告兩個日期物件，並指定日期後，進行日期相減
+        // millisecond = 86400000 = 1000*60*60*24
+        var firstDate = new Date();
+        var secondDate = new Date("2021/4/16");
+        var diff = secondDate - firstDate;
+        console.log(diff);
+        console.log(diff / 86400000);
+
+
+
+    </script>
+
+</body>
+
+</html>

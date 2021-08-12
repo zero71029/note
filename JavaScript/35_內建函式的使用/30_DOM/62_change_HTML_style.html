@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <button onclick="ZoomIn()" >放大</button>
+    <hr>
+    <p id="memo">點選圖片後，放大圖片和文字</p>
+
+    <!-- 10. 設定一張圖片 -->
+    <img id="demo" onclick="changeStyle()" src="../../_image/like.png" alt="">
+
+    <script>
+        // 練習放大文字
+        function ZoomIn(){
+            // 元素現有的字型大小每一次加一點點
+            // var temp = document.getElementById('memo').style.fontSize;
+            var temp = window.getComputedStyle(document.getElementById('memo')).getPropertyValue('font-size');
+            document.getElementById('memo').style.fontSize = (parseInt(temp) + 2) + "px";
+        }
+
+        // 練習改變元素 style 樣式
+        function changeStyle() {
+            // 20. 網頁的 圖片的 樣式的 寬度 改變
+            document.getElementById('demo').style.width = "300px";
+            // 21. 網頁的 圖片的 樣式的 高度 改變
+            document.getElementById('demo').style.height = "50px"
+            // 22. 網頁的 memo的 樣式的 字型 改變
+            document.getElementById('memo').style.fontSize = "36px";
+        }
+    </script>
+
+</body>
+
+</html>

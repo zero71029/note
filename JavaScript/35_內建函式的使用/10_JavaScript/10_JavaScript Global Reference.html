@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h4>Alphabetical JavaScript Reference</h4>
+    <p><a
+            href="https://www.w3schools.com/jsref/jsref_reference.asp">https://www.w3schools.com/jsref/jsref_reference.asp</a>
+    </p>
+    <h4>JavaScript Global Reference</h4>
+    <p><a
+            href="https://www.w3schools.com/jsref/jsref_obj_global.asp">https://www.w3schools.com/jsref/jsref_obj_global.asp</a>
+    </p>
+
+    <script>
+        // 00. isNaN()
+        var temp = isNaN("apple");
+        console.log(temp); // true
+
+        // 10. 關於"字串"的運算.. * 陷阱
+        //     a. "11" + 1
+        //     b. "11" - 1 
+        console.log("11" + 1);  // 111
+        console.log("11" - 1); // 10
+
+        // 20. parseInt() 把文字轉換為數值 (預設為10進位的轉換方式)
+        var temp2 = parseInt("11") + 1;
+        console.log(temp2); // 12
+
+        // 25. 
+        var temp3 = parseInt("apple777");
+        console.log(temp3); // NaN
+
+
+        // 28. 
+        var temp4 = parseInt("999apple666");
+        console.log(temp4); // 999
+
+
+    </script>
+
+</body>
+
+</html>

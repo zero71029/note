@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    
+    
+    
+    
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 宣告一個日期物件
+        var d = new Date();
+
+        // 取得年份
+        console.log(d.getFullYear());
+        // 取得月份 (請注意這裡)
+        console.log(d.getMonth());
+        // 取得日期
+        console.log(d.getDate());
+        // 取得星期 (請注意這裡)
+        console.log(d.getDay());
+        // 取得時間
+        console.log(d.getHours());
+        // 取得分鐘
+        console.log(d.getMinutes());
+
+        // 星期天 的 getDay() 會得到?? 
+        // Ans: 0
+        var a = new Date("2021/3/21");
+        console.log(a.getDay()); // 0
+
+
+        // 取亂數     Math.random();
+        // 四捨五入   Math.round(1.5);
+        // 無條件捨棄 Math.floor(1.5);
+        // 無條件進位 Math.ceil(1.5);
+        // 9開根號    Math.sqrt(9);
+
+        // 10. 測試 window.alert("Hi"); 和  alert("HiHi"); 是否有不同？
+        window.alert("Hi");
+        // 20. 測試 window.confirm();
+        window.confirm("apple");
+        // 10. 透過 prompt 接收使用者輸入，並記錄下來
+        // 20. 將記錄到的資訊 alert 出來
+        var temp = prompt("請輸入你的名字：");
+        console.log(temp);
+
+        // setInterval(   function () {}   , 1000);
+        //clearInterval() 清除計數器
+
+        // 20. 透過 元素.style.top 取得 樣式 top 值
+        var elm = document.getElementById('imgFind');
+        var elmTop = elm.style.top;
+        console.log(elmTop);
+
+        // 30. 透過 window.getComputedStyle(元素).getPropertyValue(樣式屬性));
+        var wTop = window.getComputedStyle(elm).getPropertyValue('top');
+        console.log(wTop);
+
+
+        // 40. 透過 CSS Selectors 取得 標籤
+        //     querySelector()
+        //     querySelectorAll()
+        // // querySelector() ==> 這款只會抓到第一個符合選擇條件的元素
+
+
+
+        $.ajax({
+            url:"/servler01",
+            data:{
+                name:"xxxxxxxx",
+                age:20
+            },
+            type:"post",
+            dataType:"post",
+            success:function(resp){
+                alert(resp);
+            }
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

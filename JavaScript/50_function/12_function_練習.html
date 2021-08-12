@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <script>
+        // 小練習：設計一個 function ， 傳入數量和單價
+        //        數量 10杯以上總金額打95折，20杯以上 打9折
+        function getMoney(qty, price) {
+            var result = qty * price;
+            if (qty >= 20) {
+                result = result * 0.9;
+            } else if (qty >= 10) {
+                result = result * 0.95;
+            }
+            return result;
+        }
+        var temp = getMoney(5, 10);
+        console.log(temp);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h4>JavaScript HTML DOM Elements</h4>
+    <h3><a
+            href="https://www.w3schools.com/js/js_htmldom_elements.asp">https://www.w3schools.com/js/js_htmldom_elements.asp</a>
+    </h3>
+
+    <hr>
+
+    <h2 id="myApple">Apple</h2>
+    <h2 class="group1">Bee</h2>
+    <h2 class="group1">Cat</h2>
+    <h2>Dog</h2>
+    <h2>Egg</h2>
+
+    <script>
+        // 10. 透過 getElementsByTagName 取得所有 <h2> 元素
+        var temp = document.getElementsByTagName('h2');
+        console.log(temp);
+
+        // 20. 透過 getElementsByClassName 取得擁有 class 類別的 元素
+        var temp = document.getElementsByClassName('group1');
+        console.log(temp);
+
+        // 30. 透過 getElementById 取得 id 為 myApple 的元素
+        var temp = document.getElementById('myApple');
+        console.log(temp);
+
+        // 40. 透過 CSS Selectors 取得 標籤
+            // querySelector()
+            // querySelectorAll()
+
+        // querySelector() ==> 這款只會抓到第一個符合選擇條件的元素
+        var temp = document.querySelector('.group1');
+        console.log(temp);
+
+        // querySelectorAll() ==> 這款會抓到"全部"選擇條件的元素
+        var temp = document.querySelectorAll('.group1');
+        console.log(temp);
+
+    </script>
+
+
+</body>
+
+</html>

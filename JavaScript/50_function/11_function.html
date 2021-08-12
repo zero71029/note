@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h3>將功能獨立出來，提高程式的可用性</h3>
+
+    <h3><a href="https://www.w3schools.com/js/js_functions.asp" target="_blank">JavaScript Functions</a></h3>
+
+    <script>
+        // 10. 函式宣告（Function Declaration）
+        function apple() {
+            console.log('apple-2');
+        }
+        // apple();
+
+
+        // 20. 需要資訊的函式 / 傳入參數的函數
+        //     呼叫需要資訊的函式時，要把資訊帶入
+        function bee(x, y, z) {
+            console.log(x);
+            console.log(y);
+            console.log(z);
+        }
+        // bee('下雨天', '留客天');
+
+
+        // 30. 從函式取得一個回傳值
+        //     return
+        function cat(x, y) {
+            return x + y + 100;
+        }
+        // cat();
+
+        // console.log(cat());
+
+        var temp = cat(1, 2);
+        // console.log(temp);
+
+
+        // 40. 函式運算式（Function Expressions）
+        //     變數 存放 計畫的內容，但呼叫時要小心
+        // 45. 函式運算式，也可以設計有參數的形式
+        var dog = function (x) {
+            console.log(x);
+        }
+        // dog('高鐵');
+
+
+
+        // 50. 建立 物件 模板
+        //      a. "建議" 第一個字母為大寫
+        //      b. this ==> 這一個物件模板
+        function Student(param) {
+            this.StudentName = param;
+        }
+
+        var s = new Student("apple");
+        // console.log(s.StudentName);   // apple
+
+        var s2 = new Student("flower");
+        // console.log(s2.StudentName);  // flower
+
+
+        // 25. 將 function 當作一個參數
+        function gooes() {
+            console.log('喵');
+            return '喵';
+        }
+
+        function print(param) {
+            // console.log(param);
+            param();
+        }
+        print(   gooes  );
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h4>JavaScript Objects</h4>
+    <p><a href="https://www.w3schools.com/js/js_object_definition.asp" target="_blank"></a></p>
+
+    <script>
+        // 10. 使用 {} create object；object 可以包含屬性和方法
+        //     { key1:value1, key2:value2.. }
+        var s1 = {
+            html: 100,
+            css: 90,
+            js: 80
+        };
+       
+        // 20. 取得 object 屬性的值或者呼叫方法
+        console.log(s1.css);
+
+        // 30. 透過 . 可以直接新增 object 的屬性
+        s1.htMl = 60;  // !!這樣會多一個 htMl 屬性出來!! 因為大小寫有差 !!
+        console.log(s1);
+
+        // 40. 透過 [] 可以新增|取得 object 的屬性
+        console.log(s1.js);     // 80
+        console.log(s1['js']);  // 80
+        console.log(s1[2]);     // X
+    </script>
+
+</body>
+
+</html>

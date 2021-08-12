@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <p>請透過 chrome > 檢查 > console 觀察執行結果</p>
+    <p> 0322-add- 傳值(by value)  vs  傳址(by reference) </p>
+
+    <script>
+
+        // var x = 5;
+        // var y = x; // !!!
+        // x = 10;
+        // console.log(y);  // 5
+
+        // -------
+        // 10. 宣告一個陣列 lsA，存放 1,2,3,4,5,6
+        var lsA = [1, 2, 3, 4, 5, 6];
+        // 20. 宣告另外一個陣列 lsB，讓 lsB = lsA
+        var lsB = lsA; // !!!!
+        // 30. 取得 lsB 第一個位置的值
+        console.log(lsB[0]); // 1
+        // 40. 修改 lsB 第一個位置的值
+        lsB[0] = 999;
+        // 50. 將 lsA 列印出來查看
+        console.log(lsA.toString());  // 1,2,3,4,5,6
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        /* 20. 將標題列背景設定為藍色 
+               (最後一欄除外) */
+        th:not(:last-child) {
+            background-color: lightblue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 10. 設置一個表格，表頭欄位依序有圖片、說明、售價、數量、小計；
+             最後一欄欄位名稱留空-->
+
+    <!-- 11. 依照表頭欄位順序建立一筆測試資料，
+             其中，數量欄位可以填寫、最後一欄放上一個「確認」按鈕-->
+
+    <table>
+        <!-- 標題列 -->
+        <tr>
+            <th>圖片</th>
+            <th>說明</th>
+            <th>售價</th>
+            <th>數量</th>
+            <th>小計</th>
+            <th></th>
+        </tr>
+
+        <!-- 內容 -->
+        <tr>
+            <td>
+                <img src="../../_image/012.png" alt="">
+            </td>
+            <td>
+                <p>巴大蝴</p>
+                <p>我不叫巴大蝶</p>
+            </td>
+            <td id="price"> 200 </td>
+            <td>
+                <input id="qty" type="text">
+            </td>
+            <td id="result"></td>
+            <td>
+                <button onclick="getTotal()">確認</button>
+            </td>
+        </tr>
+    </table>
+
+    <!-- 12. 點選按鈕後，將 售價*數量 ，然後放回到 小計 欄位 -->
+    <script>
+        function getTotal() {
+            var p   = parseInt(   document.getElementById('price').innerText  );
+            var qty = parseInt(   document.getElementById('qty').value        );
+            document.getElementById('result').innerText = p * qty;
+        }
+    </script>
+
+</body>
+
+</html>

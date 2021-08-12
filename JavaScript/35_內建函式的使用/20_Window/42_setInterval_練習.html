@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h4>Window setInterval() Method</h4>
+    <p><a
+            href="https://www.w3schools.com/jsref/met_win_setinterval.asp">https://www.w3schools.com/jsref/met_win_setinterval.asp</a>
+    </p>
+    <p>指定的秒數，做指定的事情</p>
+
+    <!-- 10. 新增兩顆按鈕，分別對應 start() 和 stop()-->
+    <button onclick="start()">開始計時</button>
+    <button onclick="stop()">暫停計時</button>
+
+    <!-- 0322-暫時先改成寫到log -->
+    <!-- 20. 新增兩個標籤，
+             一個用來顯示按鈕點後的系統時間，
+             一個用來顯示秒數 -->
+
+    <script>
+        var cnt = 0;
+        var flag = 0;
+        // 40. function start() 
+        //     setInterval() 會回傳一個數值(旗子)，關閉時會使用到
+        //     新增一個日期物件，顯示系統當前時間
+        function start() {
+            console.log("開始囉!");
+            var d = new Date();
+            console.log(d.toLocaleDateString());
+            flag = setInterval(timer, 1000);
+        }
+
+        // 50. function timer()：每一秒鐘更新一次畫面
+        function timer() {
+            cnt += 1;
+            console.log(` 計時中 ==>  ${cnt} `);
+        }
+
+        // 60. function stop()：使用 clearInterval() 清除計數器
+        function stop() {
+            console.log("結束囉!");
+            clearInterval(flag);
+            cnt = 0;
+        }
+    </script>
+</body>
+
+</html>
