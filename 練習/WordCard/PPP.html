@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="p2.css">
+</head>
+
+<body>
+    <!--新增單字背景-->
+    <div class="modal">
+        <div class="container">
+            <button id="bClose" onclick="bClose()">X</button>
+            <form action="">
+                <input class="mInput" type="text" placeholder="請輸入單字"><br>
+                <input class="mInput" type="text" placeholder="請輸入翻譯"><br>
+                <input class="mInput" type="submit"><br>
+                <input class="mInput" type="submit"><br>
+                <input class="mInput" type="submit"><br>
+            </form>
+        </div>
+    </div>
+        <!--新增單字庫背景-->
+        <div class="PaModal">
+            <div class="PaContainer">
+                <button id="PaClose" onclick="bClose()">X</button>
+                <form action="">
+                    <input class="mInput" type="text" placeholder="請輸名稱"><br>
+                    <input class="mInput" type="submit"><br>
+                </form>
+            </div>
+        </div>
+    <!-- 流星雨背景 -->
+    <canvas id="stars"></canvas>
+    <script src="star2.js"></script>
+
+    <header>AAA</header>
+
+    <!-- //左邊單字庫 -->
+    <div id="leftDiv">單字庫
+        <ul id="leftUl">
+            <li><a href="">xxxxxx</a></li>
+            <li class="CreatePackage" onclick="CreatePackage()">新增單字庫</li>
+        </ul>
+    </div>
+    <!-- //中間單字 -->
+    <div id="centerDiv" class="clearfix">
+        <div class="AAA" onclick="clickC()"><p>centerDiv<br> aaaaaaaaaa</p> </div>
+        <div class="AAA" onclick="clickC()">centerDiv<br> aaaaaaaaaa</div>
+        <div class="AAA" onclick="clickC()">centerDiv<br> aaaaaaaaaa</div>
+        <div class="AAA" onclick="clickC()">centerDiv<br> aaaaaaaaaa</div>
+        <div class="AAA" onclick="clickC()">centerDiv<br> aaaaaaaaaa</div>
+        <div class="AAA" onclick="clickC()">centerDiv <br> aaaaaaaaaa</div>
+        
+
+    </div>
+
+    <script src="p2.js"> </script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

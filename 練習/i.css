@@ -1,0 +1,46 @@
+body{
+    background-color: #4d4a40;
+    padding: 20px;
+    line-height: 2;
+
+}
+
+.container{
+    background-color: white;
+    width: 90%;
+    margin: 0 auto;
+    padding: 30px;
+
+}
+.container header{
+    background-color: #267890;
+    text-align: center;
+    color: white;
+    margin: 0 -34px ;
+    border: 5px solid #144141;
+}
+.container header h1{
+    font-size: 42px;
+    font-weight: bold;
+}
+.container header .olink{
+    color: #dbdbdb;
+    margin-bottom: 26px;
+}
+.container header .olink a:hover{
+    color: white;
+}
+.container section{
+    width: 90%;
+    
+    margin: 0 auto;
+}
+.container section p{
+    margin: 1rem 0;
+}
+.container section h2{
+    font-size: 32px;
+    font-weight: bold;
+    border-top: 1px dashed;
+    border-bottom: 1px dashed;
+}

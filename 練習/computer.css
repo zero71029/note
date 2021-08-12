@@ -1,0 +1,50 @@
+body{
+    /* background-image: url("./Starry-stars-space-night_1920x1080.jpg"); */
+}
+table{
+    position: absolute;
+    /* margin: 100px auto; */
+    width: 28%;
+    border-collapse: collapse;
+    border: black 3px solid;
+    top: 0px;
+    left: 25%;
+    
+}
+td{
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    
+}
+button{
+    background-color: rgba(34, 87, 248,0.4);
+    width:110px;
+    height:110px;
+    font-size: 90px;
+    border:1px solid black;
+    color: rgb(21, 21, 136);
+    /* background-image: url("./spotted-001.jpg");
+    background-attachment:local;
+    background-position:center;
+    background-size:cover;
+    background-repeat: no-repeat; */
+   
+    
+}
+button:focus{
+    outline: -webkit-focus-ring-color auto 0px;
+}
+button:hover{
+    background-color: red;
+    
+}
+#intext{
+    text-align: right;
+    width: 95%;
+    height:170px ;
+    background-color: rgba(37, 12, 146,0.3);
+    border: 0px;
+    font-size: 100px;
+ 
+}

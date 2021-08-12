@@ -1,0 +1,58 @@
+body{
+    color: #333;
+}
+.clearfix::after{
+    content: "";
+    display: block;
+    clear:both;
+}
+main{
+    line-height: 1.5;
+}
+.nav{
+    height: 60px;
+    color: #999;
+    background-color: #47464a;
+    text-align: center;
+    line-height: 60px;
+}
+.main .nav a{
+    margin: 0 38px;
+}
+.main .nav a :hover{
+    color: #fff;
+}
+.main .nav a.select{
+    color: #ef4238;
+}
+.main .container{
+    width: 1120px;
+    margin: 0 auto;
+}
+.main .container .choose-area{
+    border: 1px solid #e5e5e5;
+    margin: 40 0;
+font-size: 14px;
+line-height: 30px;
+
+}
+ul{
+    list-style: none;
+}
+.main .container .choose-area .choose-item .left{
+    float: left;
+    width: 60px;
+    text-align: left;
+    color: #999;
+}
+.main .container .choose-area .choose-item .right{
+    float: left;
+    width: 1050px;
+    background-color: red;
+    
+}
+.main .container .choose-area .choose-item .right li{
+float: left;
+margin: 0 9px;
+padding: 0 6px;
+}

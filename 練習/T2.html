@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>輪播圖</title>
+    <script src="./jquery-3.4.1.js"></script>
+    <style>
+        .PaModal {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            left: 0%;
+            top: 0%;
+            z-index: 4;
+            background: rgba(11, 10, 17, .8);
+
+
+        }
+
+        .PaModal .banner {
+            text-align: center;
+            position: absolute;
+            width: 500px;
+            height: 510px;
+            background: #fff;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            box-sizing: border-box;
+            border-radius: 6px;
+            z-index: 5;
+            overflow: hidden;
+
+        }
+
+        .PaModal .banner .list {
+            position: relative;
+            width: 5000px;
+            left: -400px;
+        }
+
+        .PaModal .banner img {
+            float: left;
+            width: 400px;
+            height: 510px;
+
+
+        }
+
+        .PaModal .banner h2 {
+            font-size: 50px;
+            position: absolute;
+            z-index: 7;
+            left: 400px;
+        }
+
+        .PaModal .banner button {
+            font-size: 50px;
+            position: absolute;
+            z-index: 7;
+            left: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="PaModal">
+        <div class="banner">
+            <div class="list">
+                <img src="./img/op_09.jpg" alt="">
+                <img src="./img/op_01.jpg" alt="">
+                <img src="./img/op_02.jpg" alt="">
+                <img src="./img/op_03.jpg" alt="">
+                <img src="./img/op_04.jpg" alt="">
+                <img src="./img/op_05.jpg" alt="">
+                <img src="./img/op_06.jpg" alt="">
+                <img src="./img/op_07.jpg" alt="">
+                <img src="./img/op_08.jpg" alt="">
+                <img src="./img/op_09.jpg" alt="">
+                <img src="./img/op_01.jpg" alt="">
+            </div>
+            <div id="Word">
+                <h2>xxxxx1</h2>
+                <h2>xxxxx2</h2>
+                <h2>xxxxx3</h2>
+                <h2>xxxxx4</h2>
+                <h2>xxxxx5</h2>
+                <h2>xxxxx6</h2>
+                <h2>xxxxx7</h2>
+                <h2>xxxxx8</h2>
+                <h2>xxxxx9</h2>
+                <h2>xxxx10</h2>
+            </div>
+            <button class="arrow" id="prev">>>>>></button>
+            <button class="arrow" id="next">sss</button>
+
+        </div>
+    </div>
+    <script>
+        $(function () {
+
+
+            var $banner = $(".banner");
+            var $list = $(".list");
+            var $word = $("#Word");
+            var $prev = $("#prev");
+            var $next = $("#next");
+            var targeLeft = -400;
+
+            $next.click(function () {
+                nextPage(true);
+            })
+            $prev.click(function () {
+                nextPage(false);
+            })
+            function nextPage(next) {
+                var currLeft = $list.position().left;
+                var offset = next ? -400 : 400;
+                var interval = setInterval(() => {
+                    targeLeft += (offset / 10);
+                    $list.css("left", targeLeft + "px");
+                    console.log(targeLeft);
+                    if (targeLeft == currLeft + offset) {
+                        clearInterval(interval);
+                    }
+                    if (targeLeft <= -(9 + 1) * 400) {
+                            $list.css("left", "-400px");
+                            targeLeft = -400;
+                            console.log(targeLeft);
+                        } else if (targeLeft >= 0) {
+                            targeLeft= -9 * 400;
+                            console.log(targeLeft);
+                            $list.css("left", "-3600px");
+                        }
+
+                }, 10);
+            }
+
+
+
+
+
+        })
+    </script>
+</body>
+
+</html>
