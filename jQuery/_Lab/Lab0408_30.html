@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <button id="demo">測試MyText</button>
+    <p id="apple">Hi</p>
+    <p id="bee"></p>
+
+    <script>
+        demo.onclick = function () {
+            bee.innerText = MyText('cat');
+        }
+
+        function MyText(param) {
+            return param == undefined ?
+                apple.innerText : apple.innerText = param;
+                
+            // // 沒有參數的時候要設定；
+            // if (param) {
+            //     apple.innerText = param;
+            //     return param; 
+            // } else {
+            //     return apple.innerText;
+            //     //return '2'; // false
+            // }
+        }
+    </script>
+</body>
+
+</html>

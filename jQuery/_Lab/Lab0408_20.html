@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <script>
+        // function 陣列 物件 迴圈
+        // 目標:全聯的購物車
+        //      在陣列裡面放物件
+        var pxmart = [{
+            pid: 1,
+            pname: 'apple',
+            pprice: 100,
+            pdiscount: 'Y'
+        }, {
+            pid: 2,
+            pname: 'bee',
+            pprice: 300,
+            pdiscount: 'N'
+        }]
+
+        // 總計
+        function getMoney(apple) {
+            var result = 0;
+            for (var item of pxmart) {
+                // console.log(apple);
+                // var a = apple.length;
+                result += apple(item.pdiscount, item.pprice);
+            }
+            return result;
+        }
+
+        // 折扣
+        function getDiscount(d, p) {
+            if (d == 'Y') {
+                return p * 0.8;
+            }
+            else {
+                return p;
+            }
+        }
+
+        var temp = getMoney(getDiscount);
+
+        var temp_2 = getMoney(function (d, p) {
+            if (d == 'Y') {
+                return p * 0.8;
+            }
+            else {
+                return p;
+            }
+        });
+        console.log(temp);
+        console.log(temp_2);
+    </script>
+</body>
+
+</html>

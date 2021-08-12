@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../_js/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+
+    <p>請點選登入</p>
+    <button id="btnLogin">登入</button>
+
+    <script>
+        btnLogin.onclick = function () {
+            // 10. 取得 p 元素的內容
+            var temp = $('p').text();
+            console.log(temp);
+
+            // 20. 設定 p 元素的內容
+            var b =     $('p').text('<i>apple</i>');
+            console.log(typeof b);
+
+            // 30. $().text() 和 $().html() 的差異
+            //        innerText  innerHtml
+        }
+    </script>
+
+</body>
+
+</html>

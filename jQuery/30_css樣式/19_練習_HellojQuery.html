@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../_js/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <div id="demo">
+        <div>Hello</div>
+        <div>jQuery</div>
+        <p> <span id="f"></span> 、 <span id="s"></span> </p>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#demo').css({
+                'margin': '100px 0',
+                'text-align': 'center'
+            });
+
+            $('#demo>div').css({
+                'display': 'inline-block',
+                'width': '300px',
+                'font-size': '3rem',
+                'padding': '30px 0'
+            });
+
+            // 隨機產生顏色
+            var hue = Math.floor(Math.random() * 361);
+            console.log(hue);
+
+            var firstColor = `hsl(${hue}, 80%, 70%)`;
+            var secondColor = `hsl(${(hue + 180) % 360}, 80%, 70%)`;
+
+            console.log(firstColor);
+            console.log(secondColor);
+
+            $('#f').text(firstColor).css('color', firstColor);
+            $('#s').text(secondColor).css('color', secondColor);
+
+            // body   背景顏色 == HELLO  的文字顏色
+            // HELLO  背景顏色 == jQuery 的文字顏色
+            $('body').css('background-color',firstColor);
+            $('#demo>div').eq(0).css('color',firstColor);
+            $('#demo>div').eq(0).css('background-color',secondColor);
+            $('#demo>div').eq(1).css('color',secondColor);
+            $('p').css('background-color','white')
+        })
+    </script>
+
+</body>
+
+</html>

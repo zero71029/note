@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../_js/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+
+    <script>
+
+        // 當 有一段code在複製貼上的時候
+        function getRandom(x, y = 0) {
+            return Math.floor(Math.random() * x + y);
+        }
+
+        $(document).ready(function () {
+            // 透過 jQuery 加入 圖片元素  ====> 加入一次就好
+            var r, g, b, a = getRandom(9, 1);
+            $('body').append(`<img src="image/00${a}.png">`);
+
+            setInterval(function () {
+                // 取得亂數
+                a = getRandom(9, 1);
+                r = getRandom(255);
+                g = getRandom(255);
+                b = getRandom(255);
+
+                // 每一秒鐘改變一次 img 裡面的 src 屬性
+                $('img').prop('src', `image/00${a}.png`)
+                // 每一秒鐘改變一次 背景顏色
+                $('body').css('background-color', `rgb(${r}, ${g}, ${b})`);
+
+            }, 1000);
+
+        });
+    </script>
+
+</body>
+
+</html>
