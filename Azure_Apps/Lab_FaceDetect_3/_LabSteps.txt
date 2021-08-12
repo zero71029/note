@@ -1,0 +1,230 @@
+Lab: Azure 臉部辨識 (三)  -- 現場拍照/偵測
+
+
+
+
+1.  訂閱臉部 API 服務並取得金鑰
+
+
+1.1 登入 Azure 入口網站
+    https://portal.azure.com/
+
+
+1.2 新增資源群組: lab0923ResourceGroup
+
+    <Hint>
+    資源群組 | 新增 | 
+    資源群組:lab0923ResourceGroup
+    區域: (亞太地區)東南亞
+
+
+1.3 訂閱臉部 API 服務並取得金鑰
+
+    <Hint>
+    Azure 入口網站 | 左上角 | + 建立資源 | 搜尋:臉部
+    名稱: lab0923Face
+    位置: (亞太地區)東南亞
+    定價層: F0
+    資源群組:lab0923ResourceGroup
+
+
+
+
+2.  啟動 WebCam
+
+
+2.1 在本資料夾建立新的 HTML 文件，檔名: lab.html，內容如下:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <form class="form-horizontal">
+                <fieldset>
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="control-label" for="locationTextBox">Location:</label>  
+                  <div>
+                  <input id="locationTextBox" value="southeastasia" name="locationTextBox" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+                
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="control-label" for="keyTextBox">Key:</label>  
+                  <div>
+                  <input id="keyTextBox" name="keyTextBox" 
+                    value="84c13108a0b34819b0e65125a079ef78"
+                    type="text" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+                                
+                </fieldset>
+            </form>
+        
+        </div>
+        <div class="col-sm-4">
+          <div id="cameraDiv"></div>
+          <!-- Button -->
+          <div class="form-group">
+            <label class="control-label" for="okButton"></label>
+            <div>
+              <button type="button" id="okButton" name="okButton" class="btn btn-primary">OK</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+            <canvas id="viewPort" width="320" height="240"></canvas>
+        </div>
+      </div>
+    
+    <pre id="reportHere"></pre>
+        
+</div>
+
+<script>
+
+$(document).ready(function () {
+
+    var report = function (lineData) {
+        $("#reportHere").append(lineData + "\r\n----------\r\n");
+    }
+
+    // WebCam 啟動程式
+
+
+
+    $("#okButton").on("click", function () {
+        // Lab 練習的程式寫在這邊...
+
+
+
+    });
+
+})
+
+</script>
+            
+</body>
+</html>
+
+
+2.2 如果你訂閱臉部 API 服務時選擇的機房地點不是東南亞，
+    請修改 txtLocation 的 value
+
+
+2.3 修改 keyTextBox 文字輸入方塊的 value 屬性值，
+    填入臉部偵測服務金鑰
+
+
+2.4 在 </head> 前一行，加入下列程式，引用 webcam.min.js
+    <script src="webcam.min.js"></script>
+
+    <Note>
+    有關於 WebcamJS，請參閱:
+    https://github.com/jhuckaby/webcamjs/blob/master/DOCS.md
+
+
+2.5 找出「// WebCam 啟動程式」註解，加入下列程式:
+    
+    Webcam.set({
+        width: 320,
+        height: 240,
+        image_format: 'jpeg',
+        jpeg_quality: 90
+    });
+    Webcam.attach('#cameraDiv');
+
+
+2.6 在瀏覽器檢視目前進度，測試 WebCam 是否運作正常。
+
+  <Note>
+  如果瀏覽器請詢問是否允許使用攝影機，請回答是。
+
+
+2.7 在「// Lab 練習的程式寫在這邊...」，加入下列程式:
+
+        // cameraCanvas
+        var viewContext = viewPort.getContext('2d')
+
+        Webcam.snap(function (snappedImage) {
+            // console.log(snappedImage);
+            let bufferImage = new Image();
+            bufferImage.src = snappedImage;
+            bufferImage.onload = function () {
+              viewContext.drawImage(bufferImage, 0, 0, 320, 240);
+
+              // 將 Canvas 轉成 Blob，然後 POST 給 Face API:
+              
+            }
+
+        });  // End of Webcam.snap
+
+
+
+2.8 在瀏覽器檢視目前進度，點按 OK 按鈕
+
+
+
+
+3.  連線 Azure 伺服器，使用臉部辨識服務
+
+
+3.1 找到註解「// 將 Canvas 轉成 Blob，然後 POST 給 Face API:」
+  加入下列程式:
+
+              var data = viewPort.toDataURL('image/jpeg');
+              fetch (data)
+              .then(function (res) {
+                  return res.blob()
+              })
+              .then(function (blobData) {
+                  var subscriptionKey = $("#keyTextBox").prop("value");
+                  var apiUrl =
+                    "https://" + $("#locationTextBox").val()
+                      + ".api.cognitive.microsoft.com/face/v1.0/detect"
+                  var params = {
+                      "returnFaceId": "true",
+                      "returnFaceLandmarks": "false",
+                      "returnFaceAttributes":
+                          "age,gender,headPose,smile,facialHair,glasses,emotion," +
+                          "hair,makeup,occlusion,accessories,blur,exposure,noise"
+                  };
+                  apiUrl += "?" + $.param(params);
+                  console.log(apiUrl);
+                  $.ajax({
+                    type: "post",
+                    url: apiUrl,
+                    contentType: "application/octet-stream",
+                    headers: {
+                      'Ocp-Apim-Subscription-Key': subscriptionKey
+                    },
+                    processData: false,
+                    data: blobData
+                  }).then(function (e) {
+                    report(JSON.stringify(e, null, 2));
+                  })
+
+              });
+              // -------------------------------------------
+
+
+  <Note> 建議將上述程式的寫法，對照下列API文件說明:
+  https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236
+
+
+3.2 在瀏覽器檢視目前進度，點按 OK 按鈕
+

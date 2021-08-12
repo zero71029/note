@@ -1,0 +1,167 @@
+Lab: Azure 語音應用 -- 使用 Node.js 將文字轉換為語音
+
+
+
+
+1.  訂閱語音 API 服務並取得金鑰
+
+
+1.1 登入 Azure 入口網站
+    https://portal.azure.com/
+
+
+1.2 新增資源群組: lab0923ResourceGroup
+
+    <Hint>
+    資源群組 | 新增 | 
+    資源群組:lab0923ResourceGroup
+    區域: (亞太地區)東南亞
+
+
+1.3 訂閱語音 API 服務並取得金鑰
+
+    <Hint>
+    Azure 入口網站 | 左上角 | + 建立資源 | 搜尋:語音 (或: Speech)
+    名稱: lab0923Speech
+    位置: (亞太地區)東南亞
+    定價層: F0
+    資源群組:lab0923ResourceGroup
+
+
+
+2.  文字轉語音
+
+
+2.1 在本資料夾建立新的 JavaScript 檔案，檔名: tts.js，
+    內容如下:
+
+// Requires request and request-promise for HTTP requests
+// e.g. npm install request request-promise
+const rp = require('request-promise');
+// Requires fs to write synthesized speech to a file
+const fs = require('fs');
+// Requires readline-sync to read command line inputs
+const readline = require('readline-sync');
+// Requires xmlbuilder to build the SSML body
+const xmlbuilder = require('xmlbuilder');
+
+// Gets an access token.
+function getAccessToken(subscriptionKey) {
+    let options = {
+        method: 'POST',
+        // TODO: update code
+        uri: 'https://southeastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken',
+        headers: {
+            'Ocp-Apim-Subscription-Key': subscriptionKey
+        }
+    }
+    return rp(options);
+}
+
+// Make sure to update User-Agent with the name of your resource.
+// You can also change the voice and output formats. See:
+// https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech
+function textToSpeech(accessToken, text) {
+    // Create the SSML request.
+    let xml_body = xmlbuilder.create('speak')
+        .att('version', '1.0')
+        .att('xml:lang', 'zh-TW')  // TODO: update code
+        .ele('voice')
+        .att('xml:lang', 'zh-TW')  // TODO: update code
+        // TODO: update code:
+        .att('name', 'Microsoft Server Speech Text to Speech Voice (zh-TW, Yating, Apollo)')
+        .txt(text)
+        .end();
+    // Convert the XML into a string to send in the TTS request.
+    let body = xml_body.toString();
+
+    console.log(body);
+
+    let options = {
+        method: 'POST',
+        // TODO: update code:
+        baseUrl: 'https://southeastasia.tts.speech.microsoft.com/',
+        url: 'cognitiveservices/v1',
+        headers: {
+            'Authorization': 'Bearer ' + accessToken,
+            'cache-control': 'no-cache',
+            'User-Agent': 'YOUR_RESOURCE_NAME',
+            'X-Microsoft-OutputFormat': 'riff-24khz-16bit-mono-pcm',
+            'Content-Type': 'application/ssml+xml'
+        },
+        body: body
+    }
+
+
+    let request = rp(options)
+        .on('response', (response) => {
+            if (response.statusCode === 200) {
+                request.pipe(fs.createWriteStream('TTSOutput.wav'));
+                console.log('\nYour file is ready.\n')
+            }
+        });
+    return request;
+}
+
+// Use async and await to get the token before attempting
+// to convert text to speech.
+async function main() {
+    // Reads subscription key from env variable.
+    // You can replace this with a string containing your subscription key. If
+    // you prefer not to read from an env variable.
+    // e.g. const subscriptionKey = "your_key_here";
+    // const subscriptionKey = process.env.SPEECH_SERVICE_KEY;
+    // TODO: update code:
+    const subscriptionKey = "Keyin your key here";
+    if (!subscriptionKey) {
+        throw new Error('Environment variable for your subscription key is not set.')
+    };
+    // Prompts the user to input text.
+    // const text = readline.question(
+    //     'What would you like to convert to speech? ', 
+    //     { encoding: "utf-8" }
+    // );
+    // console.log(text);
+    // TODO: update code
+    const text = "你好, 我會讀中文給你聽";
+
+    try {
+        const accessToken = await getAccessToken(subscriptionKey);
+        await textToSpeech(accessToken, text);
+    } catch (err) {
+        console.log(`Something went wrong: ${err}`);
+    }
+}
+
+main();
+
+
+
+2.2 找出下列這行，輸入你的金鑰:
+    // TODO: update code:
+    const subscriptionKey = "Keyin your key here";
+
+
+2.3 滑鼠右鍵點按 Lab_TTS | Open in Integrated Terminal
+    輸入下列指令安裝必要套件:
+npm install request-promise
+npm install readline-sync
+npm install xmlbuilder
+
+
+2.4 輸入下列指令以測試程式:
+node tts.js
+
+
+
+
+3.  修訂程式:
+
+
+3.1 全面搜尋「TODO:」字樣，並請說明各個 TODO 的作用
+
+
+3.2 如何改用其他人聲?
+
+
+3.2 如何改回英文語系?

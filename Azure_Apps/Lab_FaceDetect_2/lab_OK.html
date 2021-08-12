@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <form class="form-horizontal">
+                <fieldset>
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="control-label" for="locationTextBox">Location:</label>  
+                  <div>
+                  <input id="locationTextBox" value="southeastasia" name="locationTextBox" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+                
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="control-label" for="keyTextBox">Key:</label>  
+                  <div>
+                  <input id="keyTextBox" name="keyTextBox" 
+                    value="84c13108a0b34819b0e65125a079ef78"
+                    type="text" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+                
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="control-label" for="urlTexBox1">Image Url 1:</label>  
+                  <div>
+                  <input id="urlTexBox1" 
+                    value="https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/PersonGroup/Family3-Lady/Family3-Lady1.jpg" 
+                    name="urlTexBox" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="control-label" for="urlTexBox2">Image Url 2:</label>  
+                  <div>
+                  <input id="urlTexBox2" 
+                    value="https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/PersonGroup/Family3-Lady/Family3-Lady2.jpg" 
+                    name="urlTexBox" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+                
+                <!-- Button -->
+                <div class="form-group">
+                  <label class="control-label" for="okButton"></label>
+                  <div>
+                    <button type="button" id="okButton" name="okButton" class="btn btn-primary">OK</button>
+                  </div>
+                </div>
+                
+                </fieldset>
+            </form>
+        
+        </div>
+        <div class="col-sm-4">
+          <img id="imgShow1" class="img-responsive" />
+        </div>
+        <div class="col-sm-4">
+          <img id="imgShow2" class="img-responsive" />
+        </div>
+    </div>
+    
+    <pre id="reportHere"></pre>
+        
+</div>
+
+<script>
+
+$(document).ready(function () {
+
+    var report = function (lineData) {
+        $("#reportHere").append(lineData + "\r\n----------\r\n");
+    }
+
+    $("#okButton").on("click", function () {
+        // Lab 練習的程式寫在這邊...
+
+        var imageUrl1 = $("#urlTexBox1").val();
+        $("#imgShow1").prop("src", imageUrl1);
+        var imageUrl2 = $("#urlTexBox2").val();
+        $("#imgShow2").prop("src", imageUrl2);
+
+        var subscriptionKey = $("#keyTextBox").prop("value");
+        //report(subscriptionKey);
+    
+        var apiUrl =
+          "https://" + $("#locationTextBox").val()
+            + ".api.cognitive.microsoft.com/face/v1.0/detect"
+        //report(apiUrl);
+
+        // Request parameters.
+        var params = {
+            "returnFaceId": "true",
+            "returnFaceLandmarks": "false"
+        };
+        apiUrl += "?" + $.param(params);
+        // report(apiUrl);
+
+        $.ajax({
+          type: "post",
+          url: apiUrl,
+          headers: {
+            "Content-Type": "application/json",
+            "Ocp-Apim-Subscription-Key": subscriptionKey
+          },
+          data: '{"url": ' + '"' + imageUrl1 + '"}'
+        })
+        .then(function (e) {
+            let faceId1 = e[0].faceId;
+            $.ajax({
+                type: "post",
+                url: apiUrl,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Ocp-Apim-Subscription-Key": subscriptionKey
+                },
+                data: '{"url": ' + '"' + imageUrl2 + '"}'
+            }).then(function (e) {
+                let faceId2 = e[0].faceId;
+                var verifyApiUrl =
+                    "https://" + $("#locationTextBox").val()
+                        + ".api.cognitive.microsoft.com/face/v1.0/verify"
+                let dataToVerifyApi = {
+                    faceId1: faceId1,
+                    faceId2: faceId2
+                }
+                $.ajax({
+                    type: "post",
+                    url: verifyApiUrl,
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Ocp-Apim-Subscription-Key": subscriptionKey
+                    },
+                    data: JSON.stringify(dataToVerifyApi)
+                }).then(function (e) {
+                    report(JSON.stringify(e));
+                })
+            })
+        })
+
+
+
+    });
+
+})
+
+</script>
+            
+</body>
+</html>

@@ -1,0 +1,130 @@
+1. 先到 outlook.com 申請 email 帳號
+2. 再到 https://azure.microsoft.com/zh-tw/free/ 申請試用帳號
+
+
+//npm install express-generator -g
+//express --he's lab0518xxx_app
+
+
+//npm init -y
+//npm install express
+//package.json: , "start":"node app.js"
+//nps start
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------
+
+Azure 入口網站
+    https://portal.azure.com/
+
+--------------------------------------------------------------------------------
+
+在 Azure 中建立 Node.js Web 應用程式
+https://docs.microsoft.com/zh-tw/azure/app-service/quickstart-nodejs?pivots=platform-linux
+
+快速入門：使用 Azure 入口網站建立 Azure Database for MySQL 伺服器
+https://docs.microsoft.com/zh-tw/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal
+
+快速入門：使用 Node.js 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料
+https://docs.microsoft.com/zh-tw/azure/mysql/connect-nodejs
+
+
+--------------------------------------------------------------------------------
+
+臉部 API 文件
+https://docs.microsoft.com/zh-tw/azure/cognitive-services/face/
+
+
+快速入門：使用 REST API 和 JavaScript 偵測影像中的人臉
+https://docs.microsoft.com/zh-tw/azure/cognitive-services/Face/quickstarts/javascript
+
+
+
+
+--------------------------------------------------------------------------------
+
+語音服務文件
+https://docs.microsoft.com/zh-tw/azure/cognitive-services/speech-service/
+
+
+使用語音 SDK 在瀏覽器中以 JavaScript 辨識語音
+https://docs.microsoft.com/zh-tw/azure/cognitive-services/speech-service/quickstart-js-browser
+<Question> 似乎聽不懂中文，你能修正這個問題嗎?
+
+
+使用 Node.js 將文字轉換為語音
+請參閱 Lab_TTS 內的 _LabSteps.txt
+
+
+
+
+--------------------------------------------------------------------------------
+
+【人工智慧線 05】語意理解快速上手
+https://www.youtube.com/watch?v=CqBJZdD_Gwc
+
+
+LUIS 入口網站
+https://www.luis.ai/
+
+
+在 LUIS 入口網站中建立新的應用程式
+https://docs.microsoft.com/zh-tw/azure/cognitive-services/luis/get-started-portal-build-app
+
+
+建置 LUIS 應用程式來判斷使用者的用意
+https://docs.microsoft.com/zh-tw/azure/cognitive-services/luis/luis-quickstart-intents-only
+
+
+使用預先建置的模型識別一般使用者資料
+https://docs.microsoft.com/zh-tw/azure/cognitive-services/luis/luis-tutorial-prebuilt-intents-entities
+
+
+從使用者的語句中取得情感分析
+https://docs.microsoft.com/zh-tw/azure/cognitive-services/luis/luis-quickstart-intent-and-sentiment-analysis
+
+
+從語句取得格式正確的資料
+https://docs.microsoft.com/zh-tw/azure/cognitive-services/luis/luis-quickstart-intents-regex-entity
+
+
+使用簡單實體和片語清單來擷取名稱
+https://docs.microsoft.com/zh-tw/azure/cognitive-services/luis/luis-quickstart-primary-and-secondary-data
+
+
+
+
+--------------------------------------------------------------------------------
+
+QnA Maker 入口網站
+https://www.qnamaker.ai/
+
+
+建立使用 QnA Maker API 服務入口網站的知識庫
+https://docs.microsoft.com/zh-tw/azure/cognitive-services/qnamaker/how-to/create-knowledge-base
+
+
+使用 C# 從知識庫取得答案
+https://docs.microsoft.com/zh-tw/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-csharp
+
+
+使用 Azure Bot 服務 v3 建立 QnA Bot
+https://docs.microsoft.com/zh-tw/azure/cognitive-services/qnamaker/tutorials/create-qna-bot
+
+POST /knowledgebases/3f09696b-af5b-4588-83b4-4a2e45ab35f6/generateAnswer
+Host: https://lab520qnaaaa.azurewebsites.net/qnamaker
+Authorization: EndpointKey f3c40ca8-5f38-466f-96ad-9f2921495ca8
+Content-Type: application/json
+{"question":"<Your question>"}
+
+
+
+
+curl -X POST https://lab520qnaaaa.azurewebsites.net/qnamaker/knowledgebases/3f09696b-af5b-4588-83b4-4a2e45ab35f6/generateAnswer -H "Authorization: EndpointKey f3c40ca8-5f38-466f-96ad-9f2921495ca8" -H "Content-type: application/json" -d "{'question':'<Your question>'}"
