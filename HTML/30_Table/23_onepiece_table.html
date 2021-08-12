@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            background-image: url("img/backimg.jpg") ;
+            background-repeat: no-repeat;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #AC915D;
+        }
+        .opName{
+            color: coral;
+        }
+        .opDesc{
+            width: 200px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 40. 調整字型顏色 -->
+    <!-- 50. 欄位高度、欄位寬度：height、width -->
+    <!-- 60. 加入網頁背景底圖：background-image-->
+
+    <table>
+        <tr>
+            <td colspan="4">海賊王人物列表</td>
+            <!-- <td>B</td> -->
+            <!-- <td>C</td> -->
+            <!-- <td>D</td> -->
+        </tr>
+        <tr>
+            <td rowspan="2">
+                <img src="./img/op_01.jpg" alt="">
+            </td>
+            <td align="center" class="opName">魯夫</td>
+            <td rowspan="2">
+                <img src="./img/op_02.jpg" alt="">
+            </td>
+            <td class="opName">索隆</td>
+        </tr>
+        <tr>
+            <!-- <td>A2</td> -->
+            <td class="opDesc">左眼下方有疤痕，是為了向「紅髮」傑克証明自己的勇敢，自己用刀劃傷而留下的</td>
+            <!-- <td>C2</td> -->
+            <td class="opDesc">專長：迷路，和捲眉毛吵架</td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+                <img src="./img/op_03.jpg" alt="">
+            </td>
+            <td class="opName">娜美</td>
+            <td rowspan="2">
+                <img src="./img/op_04.jpg" alt="">
+            </td>
+            <td class="opName">騙人布</td>
+        </tr>
+        <tr>
+            <!-- <td>A4</td> -->
+            <td class="opDesc">據說尾田是參考老婆的樣子畫出娜美的</td>
+            <!-- <td>C4</td> -->
+            <td class="opDesc">草帽海賊團的狙擊手</td>
+        </tr>
+    </table>
+
+
+
+</body>
+
+</html>

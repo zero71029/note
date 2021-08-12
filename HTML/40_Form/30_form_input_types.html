@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <!-- 10. 製作一份表單-->
+    <!--   a. 標題：通勤工具使用調查-->
+    <!--   b. 在<body>裡面放入一個表單<form>-->
+    <!--   c. 在<form>表單內 加入 <fieldset> 和 <legend> 群組標籤並給予說明-->
+    <!--   d. 在表單<form>內加入 姓名 輸入欄位<input type="text">-->
+    <!--   e. 在表單<form>內加入 電話 輸入欄位<input type="text">-->
+    <form action="">
+        <fieldset>
+            <legend>基本資料</legend>
+            <label for="userName">姓名：</label>
+            <input id="userName" type="text">
+            <br>
+            <label for="userPhone">電話：</label>
+            <input id="userPhone" type="text">
+        </fieldset>
+        <fieldset>
+            <legend>選項</legend>
+            年紀： 
+            <input id="a1" name="age" type="radio"> 
+            <label for="a1">20-30</label>
+            <input id="a2" name="age" type="radio"> 
+            <label for="a2">30-40</label>
+            <input id="a3" name="age" type="radio"> 
+            <label for="a3">40-50</label>
+       
+            <br>
+            職業： 
+            <input id="b1" name="job" type="radio"> 
+            <label for="b1">學生</label>
+            <input id="b2" name="job" type="radio"> 
+            <label for="b2">老師</label>
+            <input id="b3" name="job" type="radio"> 
+            <label for="b3">其他</label>
+
+            <br>
+            交通工具： 
+            <input id="c1" name="vehicle" type="checkbox"> 
+            <label for="c1">公車</label>
+            <input id="c2" name="vehicle" type="checkbox"> 
+            <label for="c2">機車</label>
+            <input id="c3" name="vehicle" type="checkbox"> 
+            <label for="c3">其他</label>
+        </fieldset>
+
+    </form>
+
+
+    <!-- 20. 加入 職業 <input type="radio">-->
+    <!--  id：識別某個HTML文件上的元素-->
+    <!--  class：HTML標籤的分組-->
+    <!--  name：伺服器端根據name取得值；做為radio、checkbox的分組-->
+
+    <!-- 30. 加入 交通工具 <input type="checkbox"> ，步驟和 1-2 類似 -->
+
+</body>
+
+</html>
